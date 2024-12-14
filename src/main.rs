@@ -24,8 +24,7 @@ fn t_fib(n: u32) -> u32 {
             print!("#0,-: ");
             (1, 0)
         } else {
-            print!("#{},{}: ", n, n-1);
-            print!("(");
+            print!("#{},{}: (", n, n-1);
             let prev = t_fib_(n-1);
             print!(") => ");
             (prev.0 + prev.1, prev.0)
@@ -50,21 +49,21 @@ fn i_fib(n: u32) -> u32 {
 fn main() {
     println!("{GREETING}");
 
-    println!("enter count");
+    println!("enter n:");
     
-    let mut count = String::new();
-    io::stdin().read_line(&mut count).expect("failed to read line");
-    let count: u32 = count.trim().parse().expect("failed to convert to int");
+    let mut n = String::new();
+    io::stdin().read_line(&mut n).expect("failed to read line");
+    let n: u32 = n.trim().parse().expect("failed to convert to int");
 
     print!("recursive fib: ");
-    let result = r_fib(count);
+    let result = r_fib(n);
     println!(" => {result}");
 
     print!("rec.tuple fib: ");
-    let result = t_fib(count);
+    let result = t_fib(n);
     println!(" => {result}");
 
     print!("iterative fib: ");
-    let result = i_fib(count);
+    let result = i_fib(n);
     println!(" => {result}");
 }
